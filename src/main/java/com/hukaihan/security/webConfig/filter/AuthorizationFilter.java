@@ -33,7 +33,7 @@ public class AuthorizationFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        logger.info("授权过滤器");
+        logger.info("授权过滤器初始化...");
     }
 
     @Override

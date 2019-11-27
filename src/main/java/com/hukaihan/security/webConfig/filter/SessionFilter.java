@@ -36,7 +36,7 @@ public class SessionFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        logger.info("身份认证过滤器");
+        logger.info("身份认证过滤器初始化...");
     }
 
     @Override
