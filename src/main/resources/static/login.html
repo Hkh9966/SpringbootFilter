@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+</head>
+<body>
+<div>
+    用户名:<input type="text" id="username"/>
+    密码:<input type="text" id="pwd"/>
+    <button type="submit" onclick="f()">登录</button>
+</div>
+</body>
+<script>
+    function f() {
+        var username = document.getElementById('username').value;
+        var pwd = document.getElementById('pwd').value;
+        $.ajax({
+            url: 'http://localhost:8011/login/'+username+'/'+pwd,
+            type: 'GET',
+            success: function (res) {
+                alert(res);
+                // 隐藏 loading
+                // 只有请求成功（状态码为200）才会执行这个函数
+                console.log(res)
+            },
+            error: function (xhr) {
+                // 隐藏 loading
+                // 只有请求不正常（状态码不为200）才会执行
+                console.log('error', xhr)
+            },
+            complete: function (xhr) {
+                // 不管是成功还是失败都是完成，都会执行这个 complete 函数
+                console.log('complete', xhr)
+            }
+        })
+    }
+
+</script>
+</html>
