@@ -2,27 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录页面</title>
+    <title>乱七八糟业务</title>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
 </head>
 <body>
-<div>
-    用户名:<input type="text" id="username"/>
-    密码:<input type="text" id="pwd"/>
-    <br>
-    <button type="submit" onclick="f()">登录</button>
-</div>
+<button id="bt1" onclick="f1(1)">普通操作</button>
+<button id="bt2" onclick="f1(2)">管理员操作</button>
 </body>
 <script>
-    function f() {
-        var username = document.getElementById('username').value;
-        var pwd = document.getElementById('pwd').value;
+    function f1(flag) {
+        var url ;
+        if(flag===1){
+            url = 'http://localhost:8011/api/test1';
+        }else{
+            url = 'http://localhost:8011/api/test2';
+        }
         $.ajax({
-            url: 'http://localhost:8011/login/'+username+'/'+pwd,
+            url: url,
             type: 'GET',
             success: function (res) {
                 alert(res);
-                window.location.href = "http://localhost:8011/doSomeThing.html";
                 // 隐藏 loading
                 // 只有请求成功（状态码为200）才会执行这个函数
                 console.log(res)
@@ -38,6 +37,5 @@
             }
         })
     }
-
 </script>
 </html>
